@@ -53,10 +53,10 @@ Utilization:        21.23%
 
 ### Power Analysis
 Total Power:        1.282 mW
-├── Internal:       1.212 mW (94.54%)
-├── Switching:      0.031 mW (2.44%)
-└── Leakage:        0.039 mW (3.01%)
-Clock Power:        1.040 mW (81.12% of total)
+- Internal:       1.212 mW (94.54%)
+- Switching:      0.031 mW (2.44%)
+- Leakage:        0.039 mW (3.01%)
+- Clock Power:        1.040 mW (81.12% of total)
 
 ### Timing Performance
 Setup Slack:        8000 ps (positive)
