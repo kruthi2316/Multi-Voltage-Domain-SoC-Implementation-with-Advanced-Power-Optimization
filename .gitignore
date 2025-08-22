@@ -1,0 +1,19 @@
+# Large binary files
+*.enc
+*.db
+*.ddb
+
+# Temporary files
+*.log
+*.tmp
+*~
+
+# Tool specific
+.synopsys*
+.cadence*
+genus_temp*
+innovus_temp*
+
+# Large library files (comment out if needed)
+libs/stdcell/nangate45/lib/*.lib
+libs/stdcell/nangate45/lef/*.lef

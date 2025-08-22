@@ -1,0 +1,685 @@
+# special_cells.lef
+# LEF file for multi-voltage special cells
+# Technology: 45nm
+# Compatible with NangateOpenCell library
+
+VERSION 5.7 ;
+DIVIDERCHAR "/" ;
+BUSBITCHARS "[]" ;
+
+# Technology information compatible with Nangate 45nm
+UNITS
+    DATABASE MICRONS 2000 ;
+END UNITS
+
+LAYER metal1
+    TYPE ROUTING ;
+    WIDTH 0.07 ;
+    SPACING 0.07 ;
+    PITCH 0.14 ;
+    OFFSET 0.07 ;
+    RESISTANCE RPERSQ 0.38 ;
+    CAPACITANCE CPERSQDIST 0.000213 ;
+    EDGECAPACITANCE CPERSQDIST 0.000106 ;
+END metal1
+
+LAYER metal2
+    TYPE ROUTING ;
+    WIDTH 0.07 ;
+    SPACING 0.07 ;
+    PITCH 0.14 ;
+    OFFSET 0.07 ;
+    RESISTANCE RPERSQ 0.38 ;
+    CAPACITANCE CPERSQDIST 0.000200 ;
+    EDGECAPACITANCE CPERSQDIST 0.000100 ;
+END metal2
+
+LAYER metal3
+    TYPE ROUTING ;
+    WIDTH 0.07 ;
+    SPACING 0.07 ;
+    PITCH 0.14 ;
+    OFFSET 0.07 ;
+    RESISTANCE RPERSQ 0.38 ;
+    CAPACITANCE CPERSQDIST 0.000200 ;
+    EDGECAPACITANCE CPERSQDIST 0.000100 ;
+END metal3
+
+LAYER metal4
+    TYPE ROUTING ;
+    WIDTH 0.07 ;
+    SPACING 0.07 ;
+    PITCH 0.14 ;
+    OFFSET 0.07 ;
+    RESISTANCE RPERSQ 0.38 ;
+    CAPACITANCE CPERSQDIST 0.000200 ;
+    EDGECAPACITANCE CPERSQDIST 0.000100 ;
+END metal4
+
+LAYER metal5
+    TYPE ROUTING ;
+    WIDTH 0.07 ;
+    SPACING 0.07 ;
+    PITCH 0.14 ;
+    OFFSET 0.07 ;
+    RESISTANCE RPERSQ 0.38 ;
+    CAPACITANCE CPERSQDIST 0.000200 ;
+    EDGECAPACITANCE CPERSQDIST 0.000100 ;
+END metal5
+
+LAYER metal6
+    TYPE ROUTING ;
+    WIDTH 0.07 ;
+    SPACING 0.07 ;
+    PITCH 0.14 ;
+    OFFSET 0.07 ;
+    RESISTANCE RPERSQ 0.38 ;
+    CAPACITANCE CPERSQDIST 0.000200 ;
+    EDGECAPACITANCE CPERSQDIST 0.000100 ;
+END metal6
+
+# VIAs between metal layers
+VIA via1_1cut
+    LAYER metal1 ; RECT -0.035 -0.035 0.035 0.035 ;
+    LAYER metal2 ; RECT -0.035 -0.035 0.035 0.035 ;
+    LAYER via1 ; RECT -0.026 -0.026 0.026 0.026 ;
+END via1_1cut
+
+VIA via2_1cut
+    LAYER metal2 ; RECT -0.035 -0.035 0.035 0.035 ;
+    LAYER metal3 ; RECT -0.035 -0.035 0.035 0.035 ;
+    LAYER via2 ; RECT -0.026 -0.026 0.026 0.026 ;
+END via2_1cut
+
+# Standard cell site definition
+SITE FreePDK45_38x28_10R_NP_162NW_34O
+    CLASS CORE ;
+    SYMMETRY Y ;
+    SIZE 0.19 BY 1.4 ;
+END FreePDK45_38x28_10R_NP_162NW_34O
+
+#========================================
+# ISOLATION CELL - AND TYPE
+#========================================
+MACRO ISO_AND_X1
+    CLASS CORE ;
+    FOREIGN ISO_AND_X1 0.0 0.0 ;
+    ORIGIN 0.0 0.0 ;
+    SITE FreePDK45_38x28_10R_NP_162NW_34O ;
+    SIZE 1.596 BY 1.4 ;
+    SYMMETRY X Y ;
+    
+    PIN A
+        DIRECTION INPUT ;
+        USE SIGNAL ;
+        SHAPE ABUTMENT ;
+        PORT
+            LAYER metal1 ;
+                RECT 0.1 0.5 0.2 0.7 ;
+        END
+    END A
+    
+    PIN EN
+        DIRECTION INPUT ;
+        USE SIGNAL ;
+        SHAPE ABUTMENT ;
+        PORT
+            LAYER metal1 ;
+                RECT 0.3 0.5 0.4 0.7 ;
+        END
+    END EN
+    
+    PIN Y
+        DIRECTION OUTPUT ;
+        USE SIGNAL ;
+        SHAPE ABUTMENT ;
+        PORT
+            LAYER metal1 ;
+                RECT 1.2 0.5 1.3 0.7 ;
+        END
+    END Y
+    
+    PIN VDD
+        DIRECTION INPUT ;
+        USE POWER ;
+        SHAPE ABUTMENT ;
+        PORT
+            LAYER metal1 ;
+                RECT 0.0 1.3 1.596 1.4 ;
+        END
+    END VDD
+    
+    PIN VSS
+        DIRECTION INPUT ;
+        USE GROUND ;
+        SHAPE ABUTMENT ;
+        PORT
+            LAYER metal1 ;
+                RECT 0.0 0.0 1.596 0.1 ;
+        END
+    END VSS
+    
+    OBS
+        LAYER metal1 ;
+            RECT 0.0 0.1 1.596 1.3 ;
+    END
+    
+END ISO_AND_X1
+
+#========================================
+# ISOLATION CELL - OR TYPE  
+#========================================
+MACRO ISO_OR_X1
+    CLASS CORE ;
+    FOREIGN ISO_OR_X1 0.0 0.0 ;
+    ORIGIN 0.0 0.0 ;
+    SITE FreePDK45_38x28_10R_NP_162NW_34O ;
+    SIZE 1.596 BY 1.4 ;
+    SYMMETRY X Y ;
+    
+    PIN A
+        DIRECTION INPUT ;
+        USE SIGNAL ;
+        SHAPE ABUTMENT ;
+        PORT
+            LAYER metal1 ;
+                RECT 0.1 0.5 0.2 0.7 ;
+        END
+    END A
+    
+    PIN EN
+        DIRECTION INPUT ;
+        USE SIGNAL ;
+        SHAPE ABUTMENT ;
+        PORT
+            LAYER metal1 ;
+                RECT 0.3 0.5 0.4 0.7 ;
+        END
+    END EN
+    
+    PIN Y
+        DIRECTION OUTPUT ;
+        USE SIGNAL ;
+        SHAPE ABUTMENT ;
+        PORT
+            LAYER metal1 ;
+                RECT 1.2 0.5 1.3 0.7 ;
+        END
+    END Y
+    
+    PIN VDD
+        DIRECTION INPUT ;
+        USE POWER ;
+        SHAPE ABUTMENT ;
+        PORT
+            LAYER metal1 ;
+                RECT 0.0 1.3 1.596 1.4 ;
+        END
+    END VDD
+    
+    PIN VSS
+        DIRECTION INPUT ;
+        USE GROUND ;
+        SHAPE ABUTMENT ;
+        PORT
+            LAYER metal1 ;
+                RECT 0.0 0.0 1.596 0.1 ;
+        END
+    END VSS
+    
+    OBS
+        LAYER metal1 ;
+            RECT 0.0 0.1 1.596 1.3 ;
+    END
+    
+END ISO_OR_X1
+
+#========================================
+# LEVEL SHIFTER - LOW TO HIGH
+#========================================
+MACRO LS_LH_X1
+    CLASS CORE ;
+    FOREIGN LS_LH_X1 0.0 0.0 ;
+    ORIGIN 0.0 0.0 ;
+    SITE FreePDK45_38x28_10R_NP_162NW_34O ;
+    SIZE 2.926 BY 1.4 ;
+    SYMMETRY X Y ;
+    
+    PIN A
+        DIRECTION INPUT ;
+        USE SIGNAL ;
+        SHAPE ABUTMENT ;
+        PORT
+            LAYER metal1 ;
+                RECT 0.1 0.5 0.2 0.7 ;
+        END
+    END A
+    
+    PIN Y
+        DIRECTION OUTPUT ;
+        USE SIGNAL ;
+        SHAPE ABUTMENT ;
+        PORT
+            LAYER metal1 ;
+                RECT 2.5 0.5 2.6 0.7 ;
+        END
+    END Y
+    
+    PIN VDDL
+        DIRECTION INPUT ;
+        USE POWER ;
+        SHAPE ABUTMENT ;
+        PORT
+            LAYER metal1 ;
+                RECT 0.0 1.3 1.463 1.4 ;
+        END
+    END VDDL
+    
+    PIN VDDH
+        DIRECTION INPUT ;
+        USE POWER ;
+        SHAPE ABUTMENT ;
+        PORT
+            LAYER metal1 ;
+                RECT 1.463 1.3 2.926 1.4 ;
+        END
+    END VDDH
+    
+    PIN VSS
+        DIRECTION INPUT ;
+        USE GROUND ;
+        SHAPE ABUTMENT ;
+        PORT
+            LAYER metal1 ;
+                RECT 0.0 0.0 2.926 0.1 ;
+        END
+    END VSS
+    
+    OBS
+        LAYER metal1 ;
+            RECT 0.0 0.1 2.926 1.3 ;
+    END
+    
+END LS_LH_X1
+
+#========================================
+# LEVEL SHIFTER - HIGH TO LOW
+#========================================
+MACRO LS_HL_X1
+    CLASS CORE ;
+    FOREIGN LS_HL_X1 0.0 0.0 ;
+    ORIGIN 0.0 0.0 ;
+    SITE FreePDK45_38x28_10R_NP_162NW_34O ;
+    SIZE 2.926 BY 1.4 ;
+    SYMMETRY X Y ;
+    
+    PIN A
+        DIRECTION INPUT ;
+        USE SIGNAL ;
+        SHAPE ABUTMENT ;
+        PORT
+            LAYER metal1 ;
+                RECT 0.1 0.5 0.2 0.7 ;
+        END
+    END A
+    
+    PIN Y
+        DIRECTION OUTPUT ;
+        USE SIGNAL ;
+        SHAPE ABUTMENT ;
+        PORT
+            LAYER metal1 ;
+                RECT 2.5 0.5 2.6 0.7 ;
+        END
+    END Y
+    
+    PIN VDDH
+        DIRECTION INPUT ;
+        USE POWER ;
+        SHAPE ABUTMENT ;
+        PORT
+            LAYER metal1 ;
+                RECT 0.0 1.3 1.463 1.4 ;
+        END
+    END VDDH
+    
+    PIN VDDL
+        DIRECTION INPUT ;
+        USE POWER ;
+        SHAPE ABUTMENT ;
+        PORT
+            LAYER metal1 ;
+                RECT 1.463 1.3 2.926 1.4 ;
+        END
+    END VDDL
+    
+    PIN VSS
+        DIRECTION INPUT ;
+        USE GROUND ;
+        SHAPE ABUTMENT ;
+        PORT
+            LAYER metal1 ;
+                RECT 0.0 0.0 2.926 0.1 ;
+        END
+    END VSS
+    
+    OBS
+        LAYER metal1 ;
+            RECT 0.0 0.1 2.926 1.3 ;
+    END
+    
+END LS_HL_X1
+
+#========================================
+# RETENTION FLIP-FLOP
+#========================================
+MACRO RET_DFFR_X1
+    CLASS CORE ;
+    FOREIGN RET_DFFR_X1 0.0 0.0 ;
+    ORIGIN 0.0 0.0 ;
+    SITE FreePDK45_38x28_10R_NP_162NW_34O ;
+    SIZE 7.904 BY 1.4 ;
+    SYMMETRY X Y ;
+    
+    PIN D
+        DIRECTION INPUT ;
+        USE SIGNAL ;
+        SHAPE ABUTMENT ;
+        PORT
+            LAYER metal1 ;
+                RECT 0.1 0.5 0.2 0.7 ;
+        END
+    END D
+    
+    PIN CK
+        DIRECTION INPUT ;
+        USE CLOCK ;
+        SHAPE ABUTMENT ;
+        PORT
+            LAYER metal1 ;
+                RECT 1.0 0.3 1.1 0.9 ;
+        END
+    END CK
+    
+    PIN RN
+        DIRECTION INPUT ;
+        USE SIGNAL ;
+        SHAPE ABUTMENT ;
+        PORT
+            LAYER metal1 ;
+                RECT 0.5 0.5 0.6 0.7 ;
+        END
+    END RN
+    
+    PIN SAVE
+        DIRECTION INPUT ;
+        USE SIGNAL ;
+        SHAPE ABUTMENT ;
+        PORT
+            LAYER metal1 ;
+                RECT 2.0 0.5 2.1 0.7 ;
+        END
+    END SAVE
+    
+    PIN RESTORE
+        DIRECTION INPUT ;
+        USE SIGNAL ;
+        SHAPE ABUTMENT ;
+        PORT
+            LAYER metal1 ;
+                RECT 2.5 0.5 2.6 0.7 ;
+        END
+    END RESTORE
+    
+    PIN Q
+        DIRECTION OUTPUT ;
+        USE SIGNAL ;
+        SHAPE ABUTMENT ;
+        PORT
+            LAYER metal1 ;
+                RECT 7.5 0.5 7.6 0.7 ;
+        END
+    END Q
+    
+    PIN QN
+        DIRECTION OUTPUT ;
+        USE SIGNAL ;
+        SHAPE ABUTMENT ;
+        PORT
+            LAYER metal1 ;
+                RECT 7.0 0.5 7.1 0.7 ;
+        END
+    END QN
+    
+    PIN VDD
+        DIRECTION INPUT ;
+        USE POWER ;
+        SHAPE ABUTMENT ;
+        PORT
+            LAYER metal1 ;
+                RECT 0.0 1.3 5.936 1.4 ;
+        END
+    END VDD
+    
+    PIN VRET
+        DIRECTION INPUT ;
+        USE POWER ;
+        SHAPE ABUTMENT ;
+        PORT
+            LAYER metal2 ;
+                RECT 5.936 1.2 7.904 1.4 ;
+        END
+    END VRET
+    
+    PIN VSS
+        DIRECTION INPUT ;
+        USE GROUND ;
+        SHAPE ABUTMENT ;
+        PORT
+            LAYER metal1 ;
+                RECT 0.0 0.0 7.904 0.1 ;
+        END
+    END VSS
+    
+    OBS
+        LAYER metal1 ;
+            RECT 0.0 0.1 7.904 1.3 ;
+    END
+    
+END RET_DFFR_X1
+
+#========================================
+# POWER SWITCH - HEADER CELL
+#========================================
+MACRO HEADER_X1
+    CLASS CORE ;
+    FOREIGN HEADER_X1 0.0 0.0 ;
+    ORIGIN 0.0 0.0 ;
+    SITE FreePDK45_38x28_10R_NP_162NW_34O ;
+    SIZE 12.560 BY 1.4 ;
+    SYMMETRY X Y ;
+    
+    PIN SLEEP
+        DIRECTION INPUT ;
+        USE SIGNAL ;
+        SHAPE ABUTMENT ;
+        PORT
+            LAYER metal1 ;
+                RECT 6.0 0.5 6.2 0.7 ;
+        END
+    END SLEEP
+    
+    PIN VDD
+        DIRECTION INPUT ;
+        USE POWER ;
+        SHAPE ABUTMENT ;
+        PORT
+            LAYER metal2 ;
+                RECT 0.0 1.3 12.560 1.4 ;
+        END
+    END VDD
+    
+    PIN VVDD
+        DIRECTION OUTPUT ;
+        USE POWER ;
+        SHAPE ABUTMENT ;
+        PORT
+            LAYER metal1 ;
+                RECT 0.0 1.0 12.560 1.2 ;
+        END
+    END VVDD
+    
+    PIN VSS
+        DIRECTION INPUT ;
+        USE GROUND ;
+        SHAPE ABUTMENT ;
+        PORT
+            LAYER metal1 ;
+                RECT 0.0 0.0 12.560 0.1 ;
+        END
+    END VSS
+    
+    OBS
+        LAYER metal1 ;
+            RECT 0.0 0.1 12.560 1.0 ;
+    END
+    
+END HEADER_X1
+
+#========================================
+# ALWAYS-ON BUFFER
+#========================================
+MACRO AON_BUF_X1
+    CLASS CORE ;
+    FOREIGN AON_BUF_X1 0.0 0.0 ;
+    ORIGIN 0.0 0.0 ;
+    SITE FreePDK45_38x28_10R_NP_162NW_34O ;
+    SIZE 1.862 BY 1.4 ;
+    SYMMETRY X Y ;
+    
+    PIN A
+        DIRECTION INPUT ;
+        USE SIGNAL ;
+        SHAPE ABUTMENT ;
+        PORT
+            LAYER metal1 ;
+                RECT 0.1 0.5 0.2 0.7 ;
+        END
+    END A
+    
+    PIN Y
+        DIRECTION OUTPUT ;
+        USE SIGNAL ;
+        SHAPE ABUTMENT ;
+        PORT
+            LAYER metal1 ;
+                RECT 1.5 0.5 1.6 0.7 ;
+        END
+    END Y
+    
+    PIN VDD_AON
+        DIRECTION INPUT ;
+        USE POWER ;
+        SHAPE ABUTMENT ;
+        PORT
+            LAYER metal1 ;
+                RECT 0.0 1.3 1.862 1.4 ;
+        END
+    END VDD_AON
+    
+    PIN VSS
+        DIRECTION INPUT ;
+        USE GROUND ;
+        SHAPE ABUTMENT ;
+        PORT
+            LAYER metal1 ;
+                RECT 0.0 0.0 1.862 0.1 ;
+        END
+    END VSS
+    
+    OBS
+        LAYER metal1 ;
+            RECT 0.0 0.1 1.862 1.3 ;
+    END
+    
+END AON_BUF_X1
+
+#========================================
+# ENABLE LEVEL SHIFTER
+#========================================
+MACRO ELS_X1
+    CLASS CORE ;
+    FOREIGN ELS_X1 0.0 0.0 ;
+    ORIGIN 0.0 0.0 ;
+    SITE FreePDK45_38x28_10R_NP_162NW_34O ;
+    SIZE 3.724 BY 1.4 ;
+    SYMMETRY X Y ;
+    
+    PIN A
+        DIRECTION INPUT ;
+        USE SIGNAL ;
+        SHAPE ABUTMENT ;
+        PORT
+            LAYER metal1 ;
+                RECT 0.1 0.5 0.2 0.7 ;
+        END
+    END A
+    
+    PIN EN
+        DIRECTION INPUT ;
+        USE SIGNAL ;
+        SHAPE ABUTMENT ;
+        PORT
+            LAYER metal1 ;
+                RECT 0.5 0.5 0.6 0.7 ;
+        END
+    END EN
+    
+    PIN Y
+        DIRECTION OUTPUT ;
+        USE SIGNAL ;
+        SHAPE ABUTMENT ;
+        PORT
+            LAYER metal1 ;
+                RECT 3.3 0.5 3.4 0.7 ;
+        END
+    END Y
+    
+    PIN VDDL
+        DIRECTION INPUT ;
+        USE POWER ;
+        SHAPE ABUTMENT ;
+        PORT
+            LAYER metal1 ;
+                RECT 0.0 1.3 1.862 1.4 ;
+        END
+    END VDDL
+    
+    PIN VDDH
+        DIRECTION INPUT ;
+        USE POWER ;
+        SHAPE ABUTMENT ;
+        PORT
+            LAYER metal1 ;
+                RECT 1.862 1.3 3.724 1.4 ;
+        END
+    END VDDH
+    
+    PIN VSS
+        DIRECTION INPUT ;
+        USE GROUND ;
+        SHAPE ABUTMENT ;
+        PORT
+            LAYER metal1 ;
+                RECT 0.0 0.0 3.724 0.1 ;
+        END
+    END VSS
+    
+    OBS
+        LAYER metal1 ;
+            RECT 0.0 0.1 3.724 1.3 ;
+    END
+    
+END ELS_X1
+
+END LIBRARY

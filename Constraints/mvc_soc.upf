@@ -1,0 +1,134 @@
+set_design_top top_soc
+
+#######################################
+# Power Domains
+#######################################
+
+# Create power domains
+create_power_domain PD_TOP
+
+create_power_domain PD_CPU \
+    -elements {u_cpu}
+
+create_power_domain PD_DSP \
+    -elements {u_dsp}
+
+create_power_domain PD_AON \
+    -elements {u_ao u_pwr_ctrl}
+
+#######################################
+# Supply Networks
+#######################################
+
+# Create supply nets
+create_supply_net VDD_1V2
+create_supply_net VDD_0V9
+create_supply_net VDD_0V8
+create_supply_net VSS
+create_supply_net VVDD_CPU
+create_supply_net VVDD_DSP
+
+# Create supply ports
+create_supply_port VDD_1V2
+create_supply_port VDD_0V9
+create_supply_port VDD_0V8
+create_supply_port VSS
+
+#######################################
+# Domain Supply Assignment
+#######################################
+
+# Set domain supplies using UPF 2.1 syntax
+set_domain_supply_net PD_TOP \
+    -primary_power_net VDD_1V2 \
+    -primary_ground_net VSS
+
+set_domain_supply_net PD_CPU \
+    -primary_power_net VVDD_CPU \
+    -primary_ground_net VSS
+
+set_domain_supply_net PD_DSP \
+    -primary_power_net VVDD_DSP \
+    -primary_ground_net VSS
+
+set_domain_supply_net PD_AON \
+    -primary_power_net VDD_0V8 \
+    -primary_ground_net VSS
+
+#######################################
+# Power Switches (UPF 2.1)
+#######################################
+
+# CPU power switch
+create_power_switch cpu_sw -domain PD_CPU \
+    -input_supply_port {vin VDD_1V2} \
+    -output_supply_port {vout VVDD_CPU} \
+    -control_port {ctrl pwr_cpu_on} \
+    -on_state {cpu_on vin {ctrl}}
+
+# DSP power switch
+create_power_switch dsp_sw -domain PD_DSP \
+    -input_supply_port {vin VDD_0V9} \
+    -output_supply_port {vout VVDD_DSP} \
+    -control_port {ctrl pwr_dsp_on} \
+    -on_state {dsp_on vin {ctrl}}
+
+#######################################
+# Isolation (UPF 2.1)
+#######################################
+
+# CPU isolation
+set_isolation cpu_iso -domain PD_CPU \
+    -isolation_power_net VDD_0V8 \
+    -isolation_ground_net VSS \
+    -clamp_value 0 \
+    -applies_to outputs
+
+# DSP isolation  
+set_isolation dsp_iso -domain PD_DSP \
+    -isolation_power_net VDD_0V8 \
+    -isolation_ground_net VSS \
+    -clamp_value 0 \
+    -applies_to outputs
+
+#######################################
+# Level Shifters (UPF 2.1)
+#######################################
+
+# CPU to DSP level shifter
+set_level_shifter cpu_to_dsp_ls -domain PD_DSP \
+    -applies_to inputs \
+    -rule high_to_low
+
+# DSP to CPU level shifter
+set_level_shifter dsp_to_cpu_ls -domain PD_CPU \
+    -applies_to inputs \
+    -rule low_to_high
+
+# AON to CPU level shifter
+set_level_shifter ao_to_cpu_ls -domain PD_CPU \
+    -applies_to inputs \
+    -rule low_to_high
+
+# CPU to AON level shifter
+set_level_shifter cpu_to_ao_ls -domain PD_AON \
+    -applies_to inputs \
+    -rule high_to_low
+
+#######################################
+# Retention (UPF 2.1)
+#######################################
+
+# CPU retention
+set_retention cpu_retention -domain PD_CPU \
+    -retention_power_net VDD_0V8 \
+    -retention_ground_net VSS \
+    -save_signal {cpu_save high} \
+    -restore_signal {cpu_restore high}
+
+# DSP retention
+set_retention dsp_retention -domain PD_DSP \
+    -retention_power_net VDD_0V8 \
+    -retention_ground_net VSS \
+    -save_signal {dsp_save high} \
+    -restore_signal {dsp_restore high}

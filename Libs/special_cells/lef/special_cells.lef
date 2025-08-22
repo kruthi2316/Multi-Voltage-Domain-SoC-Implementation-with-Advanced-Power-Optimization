@@ -1,0 +1,278 @@
+VERSION 5.7 ;
+DIVIDERCHAR "/" ;
+BUSBITCHARS "[]" ;
+
+UNITS
+    DATABASE MICRONS 2000 ;
+END UNITS
+
+# Using FreePDK45 site (which your Nangate library uses)
+SITE FreePDK45_38x28_10R_NP_162NW_34O
+    CLASS CORE ;
+    SYMMETRY Y ;
+    SIZE 0.19 BY 1.4 ;
+END FreePDK45_38x28_10R_NP_162NW_34O
+
+#========================================
+# ISOLATION CELL - AND TYPE
+#========================================
+MACRO ISO_AND_X1
+    CLASS CORE ;
+    FOREIGN ISO_AND_X1 0.0 0.0 ;
+    ORIGIN 0.0 0.0 ;
+    SITE FreePDK45_38x28_10R_NP_162NW_34O ;
+    SIZE 1.596 BY 1.4 ;
+    SYMMETRY X Y ;
+    
+    PIN A
+        DIRECTION INPUT ;
+        USE SIGNAL ;
+        SHAPE ABUTMENT ;
+        PORT
+            LAYER metal1 ;
+                RECT 0.1 0.5 0.2 0.7 ;
+        END
+    END A
+    
+    PIN EN
+        DIRECTION INPUT ;
+        USE SIGNAL ;
+        SHAPE ABUTMENT ;
+        PORT
+            LAYER metal1 ;
+                RECT 0.3 0.5 0.4 0.7 ;
+        END
+    END EN
+    
+    PIN Y
+        DIRECTION OUTPUT ;
+        USE SIGNAL ;
+        SHAPE ABUTMENT ;
+        PORT
+            LAYER metal1 ;
+                RECT 1.2 0.5 1.3 0.7 ;
+        END
+    END Y
+    
+    PIN VDD
+        DIRECTION INPUT ;
+        USE POWER ;
+        SHAPE ABUTMENT ;
+        PORT
+            LAYER metal1 ;
+                RECT 0.0 1.3 1.596 1.4 ;
+        END
+    END VDD
+    
+    PIN VSS
+        DIRECTION INPUT ;
+        USE GROUND ;
+        SHAPE ABUTMENT ;
+        PORT
+            LAYER metal1 ;
+                RECT 0.0 0.0 1.596 0.1 ;
+        END
+    END VSS
+    
+    OBS
+        LAYER metal1 ;
+            RECT 0.0 0.1 1.596 1.3 ;
+    END
+    
+END ISO_AND_X1
+
+#========================================
+# LEVEL SHIFTER - LOW TO HIGH
+#========================================
+MACRO LS_LH_X1
+    CLASS CORE ;
+    FOREIGN LS_LH_X1 0.0 0.0 ;
+    ORIGIN 0.0 0.0 ;
+    SITE FreePDK45_38x28_10R_NP_162NW_34O ;
+    SIZE 2.926 BY 1.4 ;
+    SYMMETRY X Y ;
+    
+    PIN A
+        DIRECTION INPUT ;
+        USE SIGNAL ;
+        SHAPE ABUTMENT ;
+        PORT
+            LAYER metal1 ;
+                RECT 0.1 0.5 0.2 0.7 ;
+        END
+    END A
+    
+    PIN Y
+        DIRECTION OUTPUT ;
+        USE SIGNAL ;
+        SHAPE ABUTMENT ;
+        PORT
+            LAYER metal1 ;
+                RECT 2.5 0.5 2.6 0.7 ;
+        END
+    END Y
+    
+    PIN VDDL
+        DIRECTION INPUT ;
+        USE POWER ;
+        SHAPE ABUTMENT ;
+        PORT
+            LAYER metal1 ;
+                RECT 0.0 1.3 1.463 1.4 ;
+        END
+    END VDDL
+    
+    PIN VDDH
+        DIRECTION INPUT ;
+        USE POWER ;
+        SHAPE ABUTMENT ;
+        PORT
+            LAYER metal1 ;
+                RECT 1.463 1.3 2.926 1.4 ;
+        END
+    END VDDH
+    
+    PIN VSS
+        DIRECTION INPUT ;
+        USE GROUND ;
+        SHAPE ABUTMENT ;
+        PORT
+            LAYER metal1 ;
+                RECT 0.0 0.0 2.926 0.1 ;
+        END
+    END VSS
+    
+    OBS
+        LAYER metal1 ;
+            RECT 0.0 0.1 2.926 1.3 ;
+    END
+    
+END LS_LH_X1
+
+#========================================
+# LEVEL SHIFTER - HIGH TO LOW
+#========================================
+MACRO LS_HL_X1
+    CLASS CORE ;
+    FOREIGN LS_HL_X1 0.0 0.0 ;
+    ORIGIN 0.0 0.0 ;
+    SITE FreePDK45_38x28_10R_NP_162NW_34O ;
+    SIZE 2.926 BY 1.4 ;
+    SYMMETRY X Y ;
+    
+    PIN A
+        DIRECTION INPUT ;
+        USE SIGNAL ;
+        SHAPE ABUTMENT ;
+        PORT
+            LAYER metal1 ;
+                RECT 0.1 0.5 0.2 0.7 ;
+        END
+    END A
+    
+    PIN Y
+        DIRECTION OUTPUT ;
+        USE SIGNAL ;
+        SHAPE ABUTMENT ;
+        PORT
+            LAYER metal1 ;
+                RECT 2.5 0.5 2.6 0.7 ;
+        END
+    END Y
+    
+    PIN VDDH
+        DIRECTION INPUT ;
+        USE POWER ;
+        SHAPE ABUTMENT ;
+        PORT
+            LAYER metal1 ;
+                RECT 0.0 1.3 1.463 1.4 ;
+        END
+    END VDDH
+    
+    PIN VDDL
+        DIRECTION INPUT ;
+        USE POWER ;
+        SHAPE ABUTMENT ;
+        PORT
+            LAYER metal1 ;
+                RECT 1.463 1.3 2.926 1.4 ;
+        END
+    END VDDL
+    
+    PIN VSS
+        DIRECTION INPUT ;
+        USE GROUND ;
+        SHAPE ABUTMENT ;
+        PORT
+            LAYER metal1 ;
+                RECT 0.0 0.0 2.926 0.1 ;
+        END
+    END VSS
+    
+    OBS
+        LAYER metal1 ;
+            RECT 0.0 0.1 2.926 1.3 ;
+    END
+    
+END LS_HL_X1
+
+#========================================
+# POWER SWITCH - HEADER CELL
+#========================================
+MACRO HEADER_X1
+    CLASS CORE ;
+    FOREIGN HEADER_X1 0.0 0.0 ;
+    ORIGIN 0.0 0.0 ;
+    SITE FreePDK45_38x28_10R_NP_162NW_34O ;
+    SIZE 12.560 BY 1.4 ;
+    SYMMETRY X Y ;
+    
+    PIN SLEEP
+        DIRECTION INPUT ;
+        USE SIGNAL ;
+        SHAPE ABUTMENT ;
+        PORT
+            LAYER metal1 ;
+                RECT 6.0 0.5 6.2 0.7 ;
+        END
+    END SLEEP
+    
+    PIN VDD
+        DIRECTION INPUT ;
+        USE POWER ;
+        SHAPE ABUTMENT ;
+        PORT
+            LAYER metal2 ;
+                RECT 0.0 1.3 12.560 1.4 ;
+        END
+    END VDD
+    
+    PIN VVDD
+        DIRECTION OUTPUT ;
+        USE POWER ;
+        SHAPE ABUTMENT ;
+        PORT
+            LAYER metal1 ;
+                RECT 0.0 1.0 12.560 1.2 ;
+        END
+    END VVDD
+    
+    PIN VSS
+        DIRECTION INPUT ;
+        USE GROUND ;
+        SHAPE ABUTMENT ;
+        PORT
+            LAYER metal1 ;
+                RECT 0.0 0.0 12.560 0.1 ;
+        END
+    END VSS
+    
+    OBS
+        LAYER metal1 ;
+            RECT 0.0 0.1 12.560 1.0 ;
+    END
+    
+END HEADER_X1
+
+END LIBRARY
