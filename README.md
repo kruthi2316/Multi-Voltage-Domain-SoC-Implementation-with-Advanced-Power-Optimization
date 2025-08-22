@@ -45,11 +45,11 @@ This repository contains the complete implementation of a **Multi-Voltage Domain
 ## 📊 Implementation Results
 
 ### Area Metrics
-Total Instances:     5,714 (including 1,638 CTS buffers)
-Logic Gates:         172 cells
-Total Core Area:     625.0 μm²
-Die Size:           41.0 × 41.0 μm
-Utilization:        21.23%
+- Total Instances:     5,714 (including 1,638 CTS buffers)
+- Logic Gates:         172 cells
+- Total Core Area:     625.0 μm²
+- Die Size:           41.0 × 41.0 μm
+- Utilization:        21.23%
 
 ### Power Analysis
 Total Power:        1.282 mW
