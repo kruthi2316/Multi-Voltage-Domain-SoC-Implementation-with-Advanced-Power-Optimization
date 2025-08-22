@@ -85,12 +85,11 @@ if {[file exists "constraints/mvc_soc.sdc"]} {
     set_load 0.01 [all_outputs]
 }
 
-# Configure power optimization (Genus 19.13 syntax)
+# Configure power optimization 
 puts "Configuring power optimization..."
-# Note: Some advanced power features may not be available in this version
 # The tool will handle power management during synthesis automatically
 
-# Domain-specific optimization settings (Genus 19.13)
+# Domain-specific optimization settings
 puts "Setting domain-specific optimization..."
 
 # Run synthesis
@@ -108,7 +107,7 @@ syn_map
 puts "Running syn_opt..."
 syn_opt
 
-# Insert power management cells (Genus 19.13 syntax)
+# Insert power management cells 
 puts "Attempting to insert power management cells..."
 if {[llength $power_domains] > 1} {
     puts "Power domains detected - synthesis should handle power cells automatically"

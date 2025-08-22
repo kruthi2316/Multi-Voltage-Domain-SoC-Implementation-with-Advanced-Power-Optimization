@@ -7,7 +7,6 @@
 # Technology  : 45nm NanGate Multi-Voltage Implementation
 # Design      : mvc_soc (Multi-Voltage Domain SoC)
 # Tool        : Cadence Innovus
-# Version     : Production V5.0
 #
 # Description : Complete RTL-to-GDSII multi-voltage implementation with
 #               optimized power domains, level shifters, and power gating
@@ -216,7 +215,7 @@ puts "  Core size:          ${CORE_W} × ${CORE_H} µm"
 puts "  Die size:           ${DIE_W} × ${DIE_H} µm"
 puts "  Margins:            ${MARGIN} µm"
 
-# Create corrected floorplan
+# Create floorplan
 puts "\n  Creating optimally-sized floorplan..."
 floorPlan -coreMarginsBy die -d $DIE_W $DIE_H $MARGIN $MARGIN $MARGIN $MARGIN
 
@@ -227,7 +226,7 @@ set new_core_w [dbGet top.fPlan.coreBox_sizex]
 set new_core_h [dbGet top.fPlan.coreBox_sizey]
 set new_core_area [dbGet top.fPlan.coreBox_area]
 
-puts "\nCORRECTED FLOORPLAN CREATED:"
+puts "\nFLOORPLAN CREATED:"
 puts "  New die size:       ${new_die_w} × ${new_die_h} µm"
 puts "  New core size:      ${new_core_w} × ${new_core_h} µm"
 puts "  New core area:      $new_core_area µm²"
