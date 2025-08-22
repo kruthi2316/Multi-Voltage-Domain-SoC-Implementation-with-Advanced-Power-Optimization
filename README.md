@@ -64,30 +64,33 @@ Hold Slack:         All paths met
 Max Frequency:      100 MHz (main clock)
 Clock Uncertainty:  100 ps
 
-## 📁 Repository Structure
-mvc_soc/
-├── rtl/                      # RTL source files
-│   └── mvc_soc.v            # Top-level design with power annotations
-├── constraints/              # Design constraints
-│   ├── mvc_soc.sdc          # Timing constraints
-│   └── mvc_soc.upf          # Power intent specification
-├── libs/                     # Technology libraries
-│   ├── stdcell/             # Standard cell libraries
-│   ├── multi_vdd/           # Voltage-specific libraries
-│   │   ├── 0p8v/           # 0.8V library
-│   │   ├── 0p9v/           # 0.9V library
-│   │   └── 1p2v/           # 1.2V library
-│   └── special_cells/       # Power management cells
-├── scripts/                  # Implementation scripts
-│   ├── synthesis/           # Synthesis TCL scripts
-│   │   └── mvc_soc_synthesis.tcl
-│   └── pnr/                 # Place and route scripts
-│       └── mvc_soc_pnr.tcl
-├── work/                     # Generated outputs
-│   ├── synthesis/           # Synthesis results
-│   └── pnr/                 # Physical design outputs
-│       ├── reports/         # Timing, power, area reports
-│       └── outputs/         # Final GDSII, DEF, netlist
-└── docs/                     # Documentation
-└── MVC_SoC_Report.pdf   # Complete project report
+## 📝 Implementation Flow
+    A[RTL Design] --> B[Multi-Voltage Synthesis]
+    B --> C[Floorplanning]
+    C --> D[Power Planning]
+    D --> E[Placement]
+    E --> F[Clock Tree Synthesis]
+    F --> G[Routing]
+    G --> H[Physical Verification]
+    H --> I[GDSII Export]
+    
+    J[UPF Power Intent] --> B
+    K[SDC Constraints] --> B
+    L[Multi-VDD Libraries] --> B
+
+## 🏆 Project Highlights
+### Technical Innovations
+
+- Adaptive Power Management: Dynamic voltage scaling capability
+- Cross-Domain Optimization: Minimized level shifter overhead
+- Tool Compatibility: Resolved legacy EDA tool limitations
+- Area Efficiency: 75% reduction in die size through optimization
+
+### Learning Outcomes
+
+- Multi-voltage design methodology
+- Power-aware synthesis techniques
+- Physical design for low power
+- Industry-standard tool flows
+- Power intent specification (UPF)
 
